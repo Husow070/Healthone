@@ -1,3 +1,11 @@
+<?php
+include ("databaseconnectie.php");
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,13 +39,69 @@
     </nav>
 </div>
 <div>
-    <div">
+    <div>
         <img class="bg-image" src="./foto/Background-gym.jpg" alt="">
     </div>
 </div>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Catagories</a></li>
+        <li class="breadcrumb-item"<<a href="#">Crosstrainer</a></li>
+    </ol>
+</nav>
+<div class="row">
+
+<?php
+
+try {
+    $db = new PDO("mysql:host=localhost;dbname=crosstrainer", "root", "");
+    $query = $db->prepare("SELECT * FROM crosstrainer");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as &$data) {
+        echo "<div class='col-md-2'>";
+        echo "<h1>".$data["merk"] . " ";
+        echo $data["type"] . " ";
+        echo $data["prijs"] . "</h1>";
+        
+        echo " </div>";
+    }
+} catch (PDOException $e) {
+    die("Error!: " . $e->getMessage());
+}
+
+?>
+
+<!---->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+</div>
 <footer class="footer">
     <div class="footer-center">
-        <small style="color:grey" class="copyright">Copyright &copy 2015 SVAPP Private Limited.All Rights Reserved.</small>
+        <small style="color:grey" class="copyright">Afdeling software development Tinwerf 10, 2544 ED Den Haag.</small>
     </div><!--End container-->
 </footer><!--End footer 2-->
 </body>
