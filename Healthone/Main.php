@@ -1,6 +1,6 @@
 <?php
 include ("databaseconnectie.php");
-
+global $db;
 ?>
 
 
@@ -18,7 +18,7 @@ include ("databaseconnectie.php");
 <div class="healthOnebg">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sportcenter</a>
+            <a class="navbar-brand" href="homepagina.php">Sportcenter</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -45,9 +45,9 @@ include ("databaseconnectie.php");
 </div>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="homepagina.php">Home</a></li>
         <li class="breadcrumb-item"><a href="#">Catagories</a></li>
-        <li class="breadcrumb-item"<<a href="#">Crosstrainer</a></li>
+        <li class="breadcrumb-item"<<a href="main.php">Crosstrainer</a></li>
     </ol>
 </nav>
 <div class="row">
@@ -55,25 +55,22 @@ include ("databaseconnectie.php");
 <?php
 
 try {
-    $db = new PDO("mysql:host=localhost;dbname=crosstrainer", "root", "");
     $query = $db->prepare("SELECT * FROM crosstrainer");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as &$data) {
         echo "<div class='col-md-2'>";
-        echo "<h1>".$data["merk"] . " ";
+        echo "<h2>".$data["merk"] . " ";
         echo $data["type"] . " ";
-        echo $data["prijs"] . "</h1>";
-        
+        echo $data["prijs"] . " ";
+        echo "<img src='" . $data["image"] . "' alt='img'"; "</h2>";
         echo " </div>";
     }
 } catch (PDOException $e) {
     die("Error!: " . $e->getMessage());
 }
-
 ?>
 
-<!---->
 <!--    <div class="col-md-2">-->
 <!--        <h1>hello</h1>-->
 <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
