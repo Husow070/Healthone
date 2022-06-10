@@ -2,10 +2,6 @@
 include ("databaseconnectie.php");
 global $db;
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,22 +49,26 @@ global $db;
 <div class="row">
 
 <?php
-
 try {
     $query = $db->prepare("SELECT * FROM crosstrainer");
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as &$data) {
-        echo "<div class='col-md-2'>";
-        echo "<h2>".$data["merk"] . " ";
+        echo "<a href='detail.php?id=" . $data['id'] . "'>";
+        echo "<div class='col-md-4'>";
+        echo '<div class="row">';
+        echo "<h3>".$data["merk"] . " ";
         echo $data["type"] . " ";
-        echo $data["prijs"] . " ";
-        echo "<img src='" . $data["image"] . "' alt='img'"; "</h2>";
-        echo " </div>";
+        echo "€".$data["prijs"] . " ";
+        echo "</h3>";
+        echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
+        echo "</div>";
+        echo "</div>";
     }
 } catch (PDOException $e) {
     die("Error!: " . $e->getMessage());
 }
+echo "</div>";
 ?>
 
 <!--    <div class="col-md-2">-->
@@ -96,10 +96,10 @@ try {
 <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
 <!--    </div>-->
 </div>
-<footer class="footer">
-    <div class="footer-center">
-        <small style="color:grey" class="copyright">Afdeling software development Tinwerf 10, 2544 ED Den Haag.</small>
-    </div><!--End container-->
-</footer><!--End footer 2-->
+<footer class="bg-light text-center text-lg-start">
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        <a class="text-dark">Afdeling software development Tinwerf 10, 2544 ED Den Haag</a>
+    </div>
+</footer>
 </body>
 </html>
