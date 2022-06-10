@@ -42,11 +42,13 @@ global $db;
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="homepagina.php">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Catagories</a></li>
-        <li class="breadcrumb-item"<<a href="main.php">Crosstrainer</a></li>
+        <li class="breadcrumb-item"><a href="catagories.php">Catagories</a></li>
+        <li class="breadcrumb-item"><a href="main.php">Crosstrainer</a></li>
     </ol>
 </nav>
-<div class="row">
+<div class="container">
+
+    <div class="row">
 
 <?php
 try {
@@ -54,15 +56,14 @@ try {
     $query->execute();
     $result = $query->fetchAll(PDO::FETCH_ASSOC);
     foreach ($result as &$data) {
+        echo "<div class='col-12 col-sm-6 col-md-4'>";
         echo "<a href='detail.php?id=" . $data['id'] . "'>";
-        echo "<div class='col-md-4'>";
-        echo '<div class="row">';
         echo "<h3>".$data["merk"] . " ";
         echo $data["type"] . " ";
         echo "€".$data["prijs"] . " ";
         echo "</h3>";
         echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
-        echo "</div>";
+        echo "</a>";
         echo "</div>";
     }
 } catch (PDOException $e) {
@@ -70,7 +71,8 @@ try {
 }
 echo "</div>";
 ?>
-
+    </div>
+</div>
 <!--    <div class="col-md-2">-->
 <!--        <h1>hello</h1>-->
 <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->

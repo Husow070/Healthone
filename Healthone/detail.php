@@ -42,27 +42,35 @@ global $db;
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="homepagina.php">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Catagories</a></li>
-        <li class="breadcrumb-item"<<a href="main.php">Crosstrainer</a></li>
+        <li class="breadcrumb-item"><a href="catagories.php">Catagories</a></li>
+        <li class="breadcrumb-item"><a href="main.php">Crosstrainer</a></li>
     </ol>
 </nav>
+<div class="container">
 <div class="row">
 
     <?php
     try {
         $query = $db->prepare("SELECT * FROM crosstrainer");
-        $query = $db->prepare("SELECT * FROM crosstrainer WHERE id=" . $_GET['ID']);
+        $query = $db->prepare("SELECT * FROM crosstrainer WHERE id=" . $_GET['id']);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
         foreach ($result as &$data) {
-            echo  "Artikeln";
-            echo "merk: " . $data['merk'] . "<br>";
+        echo "<h3>" .$data["merk"] . " ";
+        echo $data["type"] . " ";
+        echo "€".$data["prijs"] . " ";
+        echo "</h3>";
+        echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
+        echo $data ["description"];
+        echo "</a>";
+        echo "</div>";
         }
     } catch (PDOException $e) {
         die("Error!: " . $e->getMessage());
     }
     echo "</div>";
     ?>
+</div>
 </div>
 <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

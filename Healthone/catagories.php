@@ -1,8 +1,7 @@
 <?php
 include ("databaseconnectie.php");
-global $db;
+include ("catagorie.php");
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,16 +43,56 @@ global $db;
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="homepagina.php">Home</a></li>
         <li class="breadcrumb-item"><a href="catagories.php">Catagories</a></li>
-        <li class="breadcrumb-item"><a href="main.php">Crosstrainer</a></li>
     </ol>
 </nav>
-<div class="welcome-page">
-    <h2>Sportcenter Healthone</h2>
-    <p>Fit en Gezond zijn is geen vanzelfsprekendheid. We moeten er zelf wat voor doen. Goede, gezonde voeding is hiervoor de basis. Bewegen hoort hier ook bij. <br>
-        Regelmatig bewegen zorgt voor een goede doorbloeding en draagt bij aan ontspanning van lichaam en geest. Sporten is goed voor sterkere spieren en voor <br>
-        de conditie.Sportcenter Healthone heeft verschillende sportapparaten om mee te kunnen werken aan je conditie.
+<div class="container">
 
-    </p>
+    <div class="row">
+
+        <?php
+        try {
+            $query = $db->prepare("SELECT * FROM catagorie");
+            $query->execute();
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+            foreach ($result as $catagory) {
+
+                echo "<div class='col-12 col-sm-6 col-md-4'>";
+                echo "<h3>".$catagory["name"];
+                echo "</h3>";
+                echo "<img class='image' src='" . $catagory["picture"] . "' alt='img'>";
+                echo "</div>";
+            }
+        } catch (PDOException $e) {
+            die("Error!: " . $e->getMessage());
+        }
+        ?>
+    </div>
+</div>
+    <!--    <div class="col-md-2">-->
+    <!--        <h1>hello</h1>-->
+    <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+    <!--    </div>-->
+    <!--    <div class="col-md-2">-->
+    <!--        <h1>hello</h1>-->
+    <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+    <!--    </div>-->
+    <!--    <div class="col-md-2">-->
+    <!--        <h1>hello</h1>-->
+    <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+    <!--    </div>-->
+    <!--    <div class="col-md-2">-->
+    <!--        <h1>hello</h1>-->
+    <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+    <!--    </div>-->
+    <!--    <div class="col-md-2">-->
+    <!--        <h1>hello</h1>-->
+    <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+    <!--    </div>-->
+    <!--    <div class="col-md-2">-->
+    <!--        <h1>hello</h1>-->
+    <!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+    <!--    </div>-->
 </div>
 <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
