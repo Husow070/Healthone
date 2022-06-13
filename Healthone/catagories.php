@@ -1,6 +1,5 @@
 <?php
 include ("databaseconnectie.php");
-include ("catagorie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,10 +53,9 @@ include ("catagorie.php");
             $query = $db->prepare("SELECT * FROM catagorie");
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
-
             foreach ($result as $catagory) {
-
                 echo "<div class='col-12 col-sm-6 col-md-4'>";
+                echo "<a href='catagorie.php?id=" . $catagory['id'] . "'>";
                 echo "<h3>".$catagory["name"];
                 echo "</h3>";
                 echo "<img class='image' src='" . $catagory["picture"] . "' alt='img'>";

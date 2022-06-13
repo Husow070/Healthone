@@ -20,15 +20,15 @@ global $db;
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav"
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Sportapparaat</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Registreren</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled">Contact</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Sportapparaat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Registreren</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Contact</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -47,30 +47,56 @@ global $db;
     </ol>
 </nav>
 <div class="container">
-<div class="row">
 
-    <?php
-    try {
-        $query = $db->prepare("SELECT * FROM products WHERE id= :id");
-        $query->bindParam("id", $_GET['id']);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as &$data) {
-        echo "<h3>" .$data["merk"] . " ";
+    <div class="row">
+
+<?php
+try {
+    $query = $db->prepare("SELECT * FROM `products`");
+    $query->execute();
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($result as &$data) {
+        echo "<div class='col-12 col-sm-6 col-md-4'>";
+        echo "<a href='detail.php?id=" . $data['id'] . "'>";
+        echo "<h3>".$data["merk"] . " ";
         echo $data["type"] . " ";
         echo "€".$data["prijs"] . " ";
         echo "</h3>";
         echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
-        echo $data ["description"];
         echo "</a>";
         echo "</div>";
-        }
-    } catch (PDOException $e) {
-        die("Error!: " . $e->getMessage());
     }
-    echo "</div>";
-    ?>
+} catch (PDOException $e) {
+    die("Error!: " . $e->getMessage());
+}
+echo "</div>";
+?>
+    </div>
 </div>
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
 </div>
 <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

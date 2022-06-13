@@ -1,6 +1,5 @@
 <?php
-include ("databaseconnectie.php");
-global $db;
+    include ("databaseconnectie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,34 +42,51 @@ global $db;
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="homepagina.php">Home</a></li>
         <li class="breadcrumb-item"><a href="catagories.php">Catagories</a></li>
-        <li class="breadcrumb-item"><a href="main.php">Crosstrainer</a></li>
     </ol>
 </nav>
 <div class="container">
-<div class="row">
-
-    <?php
-    try {
-        $query = $db->prepare("SELECT * FROM products WHERE id= :id");
-        $query->bindParam("id", $_GET['id']);
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        foreach ($result as &$data) {
-        echo "<h3>" .$data["merk"] . " ";
-        echo $data["type"] . " ";
-        echo "€".$data["prijs"] . " ";
-        echo "</h3>";
-        echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
-        echo $data ["description"];
-        echo "</a>";
-        echo "</div>";
-        }
-    } catch (PDOException $e) {
-        die("Error!: " . $e->getMessage());
-    }
-    echo "</div>";
-    ?>
+    <div class="row">
+        <?php
+            //TODO query maken waarbij je alle items ophaalt uit de products tabel waar de
+            //TODO category_id gelijk is aan de GET['id']
+            $query = $db->prepare("SELECT * FROM products WHERE id = :id");
+            $query->execute("id", $_GET['Catagory_id']);
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            foreach ($result as $catagory) {
+                echo "<div class='col-12 col-sm-6 col-md-4'>";
+                echo "<a href='catagorie.php?id=" . $catagory['id'] . "'>";
+                echo "<h3>".$catagory["name"];
+                echo "</h3>";
+                echo "<img class='image' src='" . $catagory["picture"] . "' alt='img'>";
+                echo "</div>";
+            }
+        ?>
+    </div>
 </div>
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
+<!--    <div class="col-md-2">-->
+<!--        <h1>hello</h1>-->
+<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
+<!--    </div>-->
 </div>
 <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
