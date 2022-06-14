@@ -1,5 +1,5 @@
 <?php
-    include ("databaseconnectie.php");
+    include("databaseconnectie.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,15 +49,16 @@
         <?php
             //TODO query maken waarbij je alle items ophaalt uit de products tabel waar de
             //TODO category_id gelijk is aan de GET['id']
-            $query = $db->prepare("SELECT * FROM products WHERE id = :id");
-            $query->execute("id", $_GET['Catagory_id']);
+            $query = $db->prepare("SELECT * FROM products WHERE category_id = :id");
+            $query->bindParam("id", $_GET['id']);
+            $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
-            foreach ($result as $catagory) {
+            foreach($result as $catagory) {
                 echo "<div class='col-12 col-sm-6 col-md-4'>";
-                echo "<a href='catagorie.php?id=" . $catagory['id'] . "'>";
-                echo "<h3>".$catagory["name"];
+                echo "<a href='detail.php?id=" . $catagory['id'] . "'>";
+                echo "<h3>" . $catagory["type"] . " " .$catagory["merk"] ;
                 echo "</h3>";
-                echo "<img class='image' src='" . $catagory["picture"] . "' alt='img'>";
+                echo "<img class='image' src='" . $catagory["image"] . "' alt='img'>";
                 echo "</div>";
             }
         ?>

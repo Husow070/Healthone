@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 13 jun 2022 om 14:29
+-- Gegenereerd op: 14 jun 2022 om 12:19
 -- Serverversie: 10.4.22-MariaDB
 -- PHP-versie: 7.4.27
 
@@ -67,48 +67,80 @@ ALTER TABLE `catagorie`
 ALTER TABLE `catagorie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
--- Database: `crosstrainer`
+-- Database: `customer`
 --
-DROP DATABASE IF EXISTS `crosstrainer`;
-CREATE DATABASE IF NOT EXISTS `crosstrainer` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `crosstrainer`;
+DROP DATABASE IF EXISTS `customer`;
+CREATE DATABASE IF NOT EXISTS `customer` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `customer`;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `crosstrainer`
+-- Tabelstructuur voor tabel `customer`
 --
 
-DROP TABLE IF EXISTS `crosstrainer`;
-CREATE TABLE `crosstrainer` (
-  `id` int(11) NOT NULL,
-  `merk` varchar(255) NOT NULL,
-  `type` varchar(255) NOT NULL,
-  `prijs` double NOT NULL,
-  `image` varchar(255) NOT NULL,
-  `description` text NOT NULL
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE `customer` (
+  `Customer_ID` int(11) NOT NULL,
+  `Fname` varchar(20) NOT NULL,
+  `Lname` varchar(20) NOT NULL,
+  `Email` varchar(20) NOT NULL,
+  `Address` varchar(20) NOT NULL,
+  `City` varchar(20) NOT NULL,
+  `Zipcode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `crosstrainer`
+-- Gegevens worden geëxporteerd voor tabel `customer`
 --
 
-INSERT INTO `crosstrainer` (`id`, `merk`, `type`, `prijs`, `image`, `description`) VALUES
-(1, 'Hammer', 'Crosslife XTR', 1099.5, '\\Healthone\\Foto\\crosstrainer\\Hammer.png', 'Het weerstandsbereik van de Hammer Crosstech XTR crosstrainer is onderverdeeld in 16 niveaus. Hierdoor kunt u met kleine stapjes voorzichtig de weerstand opvoeren. Een langzame toename van de belasting is vooral aan te raden voor beginners. Door steeds weer kleine doelstellingen te bereiken, blijft de trainingsmotivatie op de lange termijn hoog.'),
-(2, 'Finnlo', 'LOXON', 799.62, '\\Healthone\\Foto\\crosstrainer\\Finnlo.png', 'De Loxon crosstrainer biedt een van de beste bewegingen van de markt tegen een ongekend hoge kwaliteit en duurzaamheid. De Finnlo Loxon is uiterst geruisloos door het geperfectioneerde remsysteem en de zeer duurzaam gefabriceerde onderdelen. De vele trainingsprogramma\'s van de computer van de Finnlo Loxon garanderen u een afwisselende en functionele training.'),
-(3, 'LifeSpanfitness', 'Elliptical E3I+', 899, '\\Healthone\\Foto\\crosstrainer\\LifeSpan.png', 'Onovertroffen kwaliteit met ongekende mogelijkheden, dat is de LifeSpan E3i crosstrainer. Of u nu op zoek bent naar absolute topkwaliteit voor thuis of gewoon het beste wilt voor bijvoorbeeld uw fysiotherapie praktijk, de LifeSpan E3i is gewoon een verstandige keuze.'),
-(4, 'Maxxus', 'CX 6.1', 590, '\\Healthone\\Foto\\crosstrainer\\Maxxus.png', 'Het vliegwiel loopt heel rustig, zodat een aangenaam loopgedrag wordt gegeven. De praktische houder heeft een smartphone of tablet, zodat de training met veel entertainment kan worden verbonden.'),
-(5, 'Nordictrack', 'E9 ZL', 1249, '\\Healthone\\Foto\\crosstrainer\\NordicTrack.png', 'De degelijke NordicTrack E9 ZL is een crosstrainer met een indrukwekkend vliegwiel; van wel 22 kg! Dit vliegwiel verzekerd u van een degelijke en soepele workout.'),
-(6, 'Proform', 'Sport E2.0', 670, '\\Healthone\\Foto\\crosstrainer\\Proform.png', 'De Sport E2.0 Crosstrainer is voorzien van Bluetooth Smart (BLE), wattmeter, LCD-display en waterfleshouder voor extra gebruiksgemak. De ProForm Crosstrainer is ideaal voor beentraining, om uw spieren te versterken en tonisch te houden met zijn 8 vooringestelde trainingsprogramma\'s. Bovendien verbrandt u calorieën bij elke training dankzij de digitale weerstand op 1 tot 12 niveaus. Het heeft een 14 inch stride en een stille SMR magnetische weerstand die uw cardio en intensieve activiteiten verbetert.');
+INSERT INTO `customer` (`Customer_ID`, `Fname`, `Lname`, `Email`, `Address`, `City`, `Zipcode`) VALUES
+(6, '', '', '', '', '', ''),
+(8, '', '', '', '', '', ''),
+(9, 'Fname', 'Lname', 'Email', 'Address', 'City', 'Zipcode');
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `sushi`
+--
+
+DROP TABLE IF EXISTS `sushi`;
+CREATE TABLE `sushi` (
+  `id` int(11) NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `price` double NOT NULL,
+  `amount` int(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `sushi`
+--
+
+INSERT INTO `sushi` (`id`, `name`, `price`, `amount`) VALUES
+(1, 'Maki', 6.49, 45),
+(2, 'Hosomaki', 3.49, 30),
+(3, 'Futomaki', 6.99, 40),
+(4, 'Nigiri', 1.99, 80),
+(5, 'Uramaki', 4.99, 70),
+(6, 'Gunkan', 3.7, 30),
+(7, 'Ebi', 5.5, 60),
+(8, 'Sashimi', 11.4, 35);
 
 --
 -- Indexen voor geëxporteerde tabellen
 --
 
 --
--- Indexen voor tabel `crosstrainer`
+-- Indexen voor tabel `customer`
 --
-ALTER TABLE `crosstrainer`
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`Customer_ID`);
+
+--
+-- Indexen voor tabel `sushi`
+--
+ALTER TABLE `sushi`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -116,10 +148,16 @@ ALTER TABLE `crosstrainer`
 --
 
 --
--- AUTO_INCREMENT voor een tabel `crosstrainer`
+-- AUTO_INCREMENT voor een tabel `customer`
 --
-ALTER TABLE `crosstrainer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `customer`
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT voor een tabel `sushi`
+--
+ALTER TABLE `sushi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- Database: `healthone`
 --
@@ -172,12 +210,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `merk`, `type`, `prijs`, `image`, `description`, `category_id`) VALUES
-(1, 'Hammer', 'Crosslife XTR', 1099.5, '\\Healthone\\Foto\\crosstrainer\\Hammer.png', 'Het weerstandsbereik van de Hammer Crosstech XTR crosstrainer is onderverdeeld in 16 niveaus. Hierdoor kunt u met kleine stapjes voorzichtig de weerstand opvoeren. Een langzame toename van de belasting is vooral aan te raden voor beginners. Door steeds weer kleine doelstellingen te bereiken, blijft de trainingsmotivatie op de lange termijn hoog.', 1),
-(2, 'Finnlo', 'LOXON', 799.62, '\\Healthone\\Foto\\crosstrainer\\Finnlo.png', 'De Loxon crosstrainer biedt een van de beste bewegingen van de markt tegen een ongekend hoge kwaliteit en duurzaamheid. De Finnlo Loxon is uiterst geruisloos door het geperfectioneerde remsysteem en de zeer duurzaam gefabriceerde onderdelen. De vele trainingsprogramma\'s van de computer van de Finnlo Loxon garanderen u een afwisselende en functionele training.', 1),
-(3, 'LifeSpanfitness', 'Elliptical E3I+', 899, '\\Healthone\\Foto\\crosstrainer\\LifeSpan.png', 'Onovertroffen kwaliteit met ongekende mogelijkheden, dat is de LifeSpan E3i crosstrainer. Of u nu op zoek bent naar absolute topkwaliteit voor thuis of gewoon het beste wilt voor bijvoorbeeld uw fysiotherapie praktijk, de LifeSpan E3i is gewoon een verstandige keuze.', 1),
+(1, 'Hammer', 'Crosslife XTR', 1099.5, '\\Healthone\\Foto\\crosstrainer\\Hammer.png', 'Het weerstandsbereik van de Hammer Crosstech XTR crosstrainer is onderverdeeld in 16 niveaus. Hierdoor kunt u met kleine stapjes voorzichtig de weerstand opvoeren. Een langzame toename van de belasting is vooral aan te raden voor beginners. Door steeds weer kleine doelstellingen te bereiken, blijft de trainingsmotivatie op de lange termijn hoog.', 2),
+(2, 'Finnlo', 'LOXON', 799.62, '\\Healthone\\Foto\\crosstrainer\\Finnlo.png', 'De Loxon crosstrainer biedt een van de beste bewegingen van de markt tegen een ongekend hoge kwaliteit en duurzaamheid. De Finnlo Loxon is uiterst geruisloos door het geperfectioneerde remsysteem en de zeer duurzaam gefabriceerde onderdelen. De vele trainingsprogramma\'s van de computer van de Finnlo Loxon garanderen u een afwisselende en functionele training.', 2),
+(3, 'LifeSpanfitness', 'Elliptical E3I+', 899, '\\Healthone\\Foto\\crosstrainer\\LifeSpan.png', 'Onovertroffen kwaliteit met ongekende mogelijkheden, dat is de LifeSpan E3i crosstrainer. Of u nu op zoek bent naar absolute topkwaliteit voor thuis of gewoon het beste wilt voor bijvoorbeeld uw fysiotherapie praktijk, de LifeSpan E3i is gewoon een verstandige keuze.', 2),
 (4, 'Maxxus', 'CX 6.1', 590, '\\Healthone\\Foto\\crosstrainer\\Maxxus.png', 'Het vliegwiel loopt heel rustig, zodat een aangenaam loopgedrag wordt gegeven. De praktische houder heeft een smartphone of tablet, zodat de training met veel entertainment kan worden verbonden.', 2),
 (5, 'Nordictrack', 'E9 ZL', 1249, '\\Healthone\\Foto\\crosstrainer\\NordicTrack.png', 'De degelijke NordicTrack E9 ZL is een crosstrainer met een indrukwekkend vliegwiel; van wel 22 kg! Dit vliegwiel verzekerd u van een degelijke en soepele workout.', 2),
-(6, 'Proform', 'Sport E2.0', 670, '\\Healthone\\Foto\\crosstrainer\\Proform.png', 'De Sport E2.0 Crosstrainer is voorzien van Bluetooth Smart (BLE), wattmeter, LCD-display en waterfleshouder voor extra gebruiksgemak. De ProForm Crosstrainer is ideaal voor beentraining, om uw spieren te versterken en tonisch te houden met zijn 8 vooringestelde trainingsprogramma\'s. Bovendien verbrandt u calorieën bij elke training dankzij de digitale weerstand op 1 tot 12 niveaus. Het heeft een 14 inch stride en een stille SMR magnetische weerstand die uw cardio en intensieve activiteiten verbetert.', 3);
+(6, 'Proform', 'Sport E2.0', 670, '\\Healthone\\Foto\\crosstrainer\\Proform.png', 'De Sport E2.0 Crosstrainer is voorzien van Bluetooth Smart (BLE), wattmeter, LCD-display en waterfleshouder voor extra gebruiksgemak. De ProForm Crosstrainer is ideaal voor beentraining, om uw spieren te versterken en tonisch te houden met zijn 8 vooringestelde trainingsprogramma\'s. Bovendien verbrandt u calorieën bij elke training dankzij de digitale weerstand op 1 tot 12 niveaus. Het heeft een 14 inch stride en een stille SMR magnetische weerstand die uw cardio en intensieve activiteiten verbetert.', 2);
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -370,7 +408,7 @@ CREATE TABLE `pma__recent` (
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"healthone\",\"table\":\"products\"},{\"db\":\"healthone\",\"table\":\"catagorie\"},{\"db\":\"healthone\",\"table\":\"crosstrainer\"},{\"db\":\"catagorie\",\"table\":\"catagorie\"},{\"db\":\"crosstrainer\",\"table\":\"crosstrainer\"}]');
+('root', '[{\"db\":\"healthone\",\"table\":\"products\"},{\"db\":\"healthone\",\"table\":\"catagorie\"},{\"db\":\"crosstrainer\",\"table\":\"crosstrainer\"},{\"db\":\"catagorie\",\"table\":\"catagorie\"},{\"db\":\"customer\",\"table\":\"customer\"},{\"db\":\"customer\",\"table\":\"sushi\"}]');
 
 -- --------------------------------------------------------
 
@@ -446,14 +484,6 @@ CREATE TABLE `pma__table_uiprefs` (
   `last_update` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Tables'' UI preferences';
 
---
--- Gegevens worden geëxporteerd voor tabel `pma__table_uiprefs`
---
-
-INSERT INTO `pma__table_uiprefs` (`username`, `db_name`, `table_name`, `prefs`, `last_update`) VALUES
-('root', 'catagorie', 'catagorie', '{\"sorted_col\":\"`picture`  DESC\"}', '2022-06-10 13:07:42'),
-('root', 'healthone', 'products', '{\"sorted_col\":\"`products`.`category_id` ASC\"}', '2022-06-13 11:47:16');
-
 -- --------------------------------------------------------
 
 --
@@ -492,7 +522,7 @@ CREATE TABLE `pma__userconfig` (
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2022-06-13 12:29:17', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"nl\"}');
+('root', '2022-06-14 09:39:24', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"nl\"}');
 
 -- --------------------------------------------------------
 

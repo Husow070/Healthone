@@ -44,7 +44,6 @@ global $db;
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="homepagina.php">Home</a></li>
         <li class="breadcrumb-item"><a href="catagories.php">Catagories</a></li>
-        <li class="breadcrumb-item"><a href="main.php">Crosstrainer</a></li>
     </ol>
 </nav>
 <div class="welcome-page">
