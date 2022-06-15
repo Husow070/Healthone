@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 14 jun 2022 om 12:19
--- Serverversie: 10.4.22-MariaDB
--- PHP-versie: 7.4.27
+-- Generation Time: Jun 15, 2022 at 03:59 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,54 +18,46 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `catagorie`
+-- Database: `collage`
 --
-DROP DATABASE IF EXISTS `catagorie`;
-CREATE DATABASE IF NOT EXISTS `catagorie` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `catagorie`;
+DROP DATABASE IF EXISTS `collage`;
+CREATE DATABASE IF NOT EXISTS `collage` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `collage`;
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `catagorie`
+-- Table structure for table `collage`
 --
 
-DROP TABLE IF EXISTS `catagorie`;
-CREATE TABLE `catagorie` (
+DROP TABLE IF EXISTS `collage`;
+CREATE TABLE `collage` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `picture` varchar(255) NOT NULL
+  `hader` varchar(0) NOT NULL,
+  `footer` int(11) NOT NULL,
+  `afbeelding` int(11) NOT NULL,
+  `logo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `catagorie`
---
-
-INSERT INTO `catagorie` (`id`, `name`, `picture`) VALUES
-(1, 'Roeitrainer', '\\Healthone\\Foto\\catagorie\\Roeitrainer.png'),
-(2, 'Crosstrainer', '\\Healthone\\Foto\\catagorie\\Cross1.png'),
-(3, 'Hometrainer', '\\Healthone\\Foto\\catagorie\\Hometrainer.png'),
-(4, 'Loopband', '\\Healthone\\Foto\\catagorie\\Loopband.png');
-
---
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `catagorie`
+-- Indexes for table `collage`
 --
-ALTER TABLE `catagorie`
+ALTER TABLE `collage`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `catagorie`
+-- AUTO_INCREMENT for table `collage`
 --
-ALTER TABLE `catagorie`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+ALTER TABLE `collage`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Database: `customer`
 --
@@ -76,7 +68,7 @@ USE `customer`;
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `customer`
+-- Table structure for table `customer`
 --
 
 DROP TABLE IF EXISTS `customer`;
@@ -91,7 +83,7 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `customer`
+-- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`Customer_ID`, `Fname`, `Lname`, `Email`, `Address`, `City`, `Zipcode`) VALUES
@@ -102,7 +94,7 @@ INSERT INTO `customer` (`Customer_ID`, `Fname`, `Lname`, `Email`, `Address`, `Ci
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `sushi`
+-- Table structure for table `sushi`
 --
 
 DROP TABLE IF EXISTS `sushi`;
@@ -114,7 +106,7 @@ CREATE TABLE `sushi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `sushi`
+-- Dumping data for table `sushi`
 --
 
 INSERT INTO `sushi` (`id`, `name`, `price`, `amount`) VALUES
@@ -128,33 +120,33 @@ INSERT INTO `sushi` (`id`, `name`, `price`, `amount`) VALUES
 (8, 'Sashimi', 11.4, 35);
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `customer`
+-- Indexes for table `customer`
 --
 ALTER TABLE `customer`
   ADD PRIMARY KEY (`Customer_ID`);
 
 --
--- Indexen voor tabel `sushi`
+-- Indexes for table `sushi`
 --
 ALTER TABLE `sushi`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `customer`
+-- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `Customer_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT voor een tabel `sushi`
+-- AUTO_INCREMENT for table `sushi`
 --
 ALTER TABLE `sushi`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
@@ -168,7 +160,7 @@ USE `healthone`;
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `catagorie`
+-- Table structure for table `catagorie`
 --
 
 DROP TABLE IF EXISTS `catagorie`;
@@ -179,7 +171,7 @@ CREATE TABLE `catagorie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `catagorie`
+-- Dumping data for table `catagorie`
 --
 
 INSERT INTO `catagorie` (`id`, `name`, `picture`) VALUES
@@ -191,7 +183,7 @@ INSERT INTO `catagorie` (`id`, `name`, `picture`) VALUES
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `products`
+-- Table structure for table `products`
 --
 
 DROP TABLE IF EXISTS `products`;
@@ -206,7 +198,7 @@ CREATE TABLE `products` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Gegevens worden geëxporteerd voor tabel `products`
+-- Dumping data for table `products`
 --
 
 INSERT INTO `products` (`id`, `merk`, `type`, `prijs`, `image`, `description`, `category_id`) VALUES
@@ -217,37 +209,63 @@ INSERT INTO `products` (`id`, `merk`, `type`, `prijs`, `image`, `description`, `
 (5, 'Nordictrack', 'E9 ZL', 1249, '\\Healthone\\Foto\\crosstrainer\\NordicTrack.png', 'De degelijke NordicTrack E9 ZL is een crosstrainer met een indrukwekkend vliegwiel; van wel 22 kg! Dit vliegwiel verzekerd u van een degelijke en soepele workout.', 2),
 (6, 'Proform', 'Sport E2.0', 670, '\\Healthone\\Foto\\crosstrainer\\Proform.png', 'De Sport E2.0 Crosstrainer is voorzien van Bluetooth Smart (BLE), wattmeter, LCD-display en waterfleshouder voor extra gebruiksgemak. De ProForm Crosstrainer is ideaal voor beentraining, om uw spieren te versterken en tonisch te houden met zijn 8 vooringestelde trainingsprogramma\'s. Bovendien verbrandt u calorieën bij elke training dankzij de digitale weerstand op 1 tot 12 niveaus. Het heeft een 14 inch stride en een stille SMR magnetische weerstand die uw cardio en intensieve activiteiten verbetert.', 2);
 
+-- --------------------------------------------------------
+
 --
--- Indexen voor geëxporteerde tabellen
+-- Table structure for table `review`
+--
+
+DROP TABLE IF EXISTS `review`;
+CREATE TABLE `review` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `message` varchar(255) COLLATE utf8mb4_bin NOT NULL,
+  `score` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `catagorie`
+-- Indexes for table `catagorie`
 --
 ALTER TABLE `catagorie`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `products`
+-- Indexes for table `products`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- Indexes for table `review`
+--
+ALTER TABLE `review`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `catagorie`
+-- AUTO_INCREMENT for table `catagorie`
 --
 ALTER TABLE `catagorie`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT voor een tabel `products`
+-- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `review`
+--
+ALTER TABLE `review`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- Database: `phpmyadmin`
 --
@@ -258,7 +276,7 @@ USE `phpmyadmin`;
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__bookmark`
+-- Table structure for table `pma__bookmark`
 --
 
 DROP TABLE IF EXISTS `pma__bookmark`;
@@ -273,7 +291,7 @@ CREATE TABLE `pma__bookmark` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__central_columns`
+-- Table structure for table `pma__central_columns`
 --
 
 DROP TABLE IF EXISTS `pma__central_columns`;
@@ -291,7 +309,7 @@ CREATE TABLE `pma__central_columns` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__column_info`
+-- Table structure for table `pma__column_info`
 --
 
 DROP TABLE IF EXISTS `pma__column_info`;
@@ -311,7 +329,7 @@ CREATE TABLE `pma__column_info` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__designer_settings`
+-- Table structure for table `pma__designer_settings`
 --
 
 DROP TABLE IF EXISTS `pma__designer_settings`;
@@ -323,7 +341,7 @@ CREATE TABLE `pma__designer_settings` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__export_templates`
+-- Table structure for table `pma__export_templates`
 --
 
 DROP TABLE IF EXISTS `pma__export_templates`;
@@ -338,7 +356,7 @@ CREATE TABLE `pma__export_templates` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__favorite`
+-- Table structure for table `pma__favorite`
 --
 
 DROP TABLE IF EXISTS `pma__favorite`;
@@ -350,7 +368,7 @@ CREATE TABLE `pma__favorite` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__history`
+-- Table structure for table `pma__history`
 --
 
 DROP TABLE IF EXISTS `pma__history`;
@@ -366,7 +384,7 @@ CREATE TABLE `pma__history` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__navigationhiding`
+-- Table structure for table `pma__navigationhiding`
 --
 
 DROP TABLE IF EXISTS `pma__navigationhiding`;
@@ -381,7 +399,7 @@ CREATE TABLE `pma__navigationhiding` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__pdf_pages`
+-- Table structure for table `pma__pdf_pages`
 --
 
 DROP TABLE IF EXISTS `pma__pdf_pages`;
@@ -394,7 +412,7 @@ CREATE TABLE `pma__pdf_pages` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__recent`
+-- Table structure for table `pma__recent`
 --
 
 DROP TABLE IF EXISTS `pma__recent`;
@@ -404,16 +422,16 @@ CREATE TABLE `pma__recent` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Recently accessed tables';
 
 --
--- Gegevens worden geëxporteerd voor tabel `pma__recent`
+-- Dumping data for table `pma__recent`
 --
 
 INSERT INTO `pma__recent` (`username`, `tables`) VALUES
-('root', '[{\"db\":\"healthone\",\"table\":\"products\"},{\"db\":\"healthone\",\"table\":\"catagorie\"},{\"db\":\"crosstrainer\",\"table\":\"crosstrainer\"},{\"db\":\"catagorie\",\"table\":\"catagorie\"},{\"db\":\"customer\",\"table\":\"customer\"},{\"db\":\"customer\",\"table\":\"sushi\"}]');
+('root', '[{\"db\":\"healthone\",\"table\":\"review\"},{\"db\":\"healthone\",\"table\":\"reviews\"},{\"db\":\"healthone\",\"table\":\"products\"},{\"db\":\"healthone\",\"table\":\"catagorie\"},{\"db\":\"healthone\",\"table\":\"crosstrainer\"},{\"db\":\"catagorie\",\"table\":\"catagorie\"},{\"db\":\"crosstrainer\",\"table\":\"crosstrainer\"}]');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__relation`
+-- Table structure for table `pma__relation`
 --
 
 DROP TABLE IF EXISTS `pma__relation`;
@@ -429,7 +447,7 @@ CREATE TABLE `pma__relation` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__savedsearches`
+-- Table structure for table `pma__savedsearches`
 --
 
 DROP TABLE IF EXISTS `pma__savedsearches`;
@@ -444,7 +462,7 @@ CREATE TABLE `pma__savedsearches` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__table_coords`
+-- Table structure for table `pma__table_coords`
 --
 
 DROP TABLE IF EXISTS `pma__table_coords`;
@@ -459,7 +477,7 @@ CREATE TABLE `pma__table_coords` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__table_info`
+-- Table structure for table `pma__table_info`
 --
 
 DROP TABLE IF EXISTS `pma__table_info`;
@@ -472,7 +490,7 @@ CREATE TABLE `pma__table_info` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__table_uiprefs`
+-- Table structure for table `pma__table_uiprefs`
 --
 
 DROP TABLE IF EXISTS `pma__table_uiprefs`;
@@ -487,7 +505,7 @@ CREATE TABLE `pma__table_uiprefs` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__tracking`
+-- Table structure for table `pma__tracking`
 --
 
 DROP TABLE IF EXISTS `pma__tracking`;
@@ -507,7 +525,7 @@ CREATE TABLE `pma__tracking` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__userconfig`
+-- Table structure for table `pma__userconfig`
 --
 
 DROP TABLE IF EXISTS `pma__userconfig`;
@@ -518,16 +536,16 @@ CREATE TABLE `pma__userconfig` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='User preferences storage for phpMyAdmin';
 
 --
--- Gegevens worden geëxporteerd voor tabel `pma__userconfig`
+-- Dumping data for table `pma__userconfig`
 --
 
 INSERT INTO `pma__userconfig` (`username`, `timevalue`, `config_data`) VALUES
-('root', '2022-06-14 09:39:24', '{\"Console\\/Mode\":\"collapse\",\"lang\":\"nl\"}');
+('root', '2022-06-15 13:57:32', '{\"Console\\/Mode\":\"collapse\"}');
 
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__usergroups`
+-- Table structure for table `pma__usergroups`
 --
 
 DROP TABLE IF EXISTS `pma__usergroups`;
@@ -540,7 +558,7 @@ CREATE TABLE `pma__usergroups` (
 -- --------------------------------------------------------
 
 --
--- Tabelstructuur voor tabel `pma__users`
+-- Table structure for table `pma__users`
 --
 
 DROP TABLE IF EXISTS `pma__users`;
@@ -550,165 +568,165 @@ CREATE TABLE `pma__users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='Users and their assignments to user groups';
 
 --
--- Indexen voor geëxporteerde tabellen
+-- Indexes for dumped tables
 --
 
 --
--- Indexen voor tabel `pma__bookmark`
+-- Indexes for table `pma__bookmark`
 --
 ALTER TABLE `pma__bookmark`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexen voor tabel `pma__central_columns`
+-- Indexes for table `pma__central_columns`
 --
 ALTER TABLE `pma__central_columns`
   ADD PRIMARY KEY (`db_name`,`col_name`);
 
 --
--- Indexen voor tabel `pma__column_info`
+-- Indexes for table `pma__column_info`
 --
 ALTER TABLE `pma__column_info`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `db_name` (`db_name`,`table_name`,`column_name`);
 
 --
--- Indexen voor tabel `pma__designer_settings`
+-- Indexes for table `pma__designer_settings`
 --
 ALTER TABLE `pma__designer_settings`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexen voor tabel `pma__export_templates`
+-- Indexes for table `pma__export_templates`
 --
 ALTER TABLE `pma__export_templates`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `u_user_type_template` (`username`,`export_type`,`template_name`);
 
 --
--- Indexen voor tabel `pma__favorite`
+-- Indexes for table `pma__favorite`
 --
 ALTER TABLE `pma__favorite`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexen voor tabel `pma__history`
+-- Indexes for table `pma__history`
 --
 ALTER TABLE `pma__history`
   ADD PRIMARY KEY (`id`),
   ADD KEY `username` (`username`,`db`,`table`,`timevalue`);
 
 --
--- Indexen voor tabel `pma__navigationhiding`
+-- Indexes for table `pma__navigationhiding`
 --
 ALTER TABLE `pma__navigationhiding`
   ADD PRIMARY KEY (`username`,`item_name`,`item_type`,`db_name`,`table_name`);
 
 --
--- Indexen voor tabel `pma__pdf_pages`
+-- Indexes for table `pma__pdf_pages`
 --
 ALTER TABLE `pma__pdf_pages`
   ADD PRIMARY KEY (`page_nr`),
   ADD KEY `db_name` (`db_name`);
 
 --
--- Indexen voor tabel `pma__recent`
+-- Indexes for table `pma__recent`
 --
 ALTER TABLE `pma__recent`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexen voor tabel `pma__relation`
+-- Indexes for table `pma__relation`
 --
 ALTER TABLE `pma__relation`
   ADD PRIMARY KEY (`master_db`,`master_table`,`master_field`),
   ADD KEY `foreign_field` (`foreign_db`,`foreign_table`);
 
 --
--- Indexen voor tabel `pma__savedsearches`
+-- Indexes for table `pma__savedsearches`
 --
 ALTER TABLE `pma__savedsearches`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `u_savedsearches_username_dbname` (`username`,`db_name`,`search_name`);
 
 --
--- Indexen voor tabel `pma__table_coords`
+-- Indexes for table `pma__table_coords`
 --
 ALTER TABLE `pma__table_coords`
   ADD PRIMARY KEY (`db_name`,`table_name`,`pdf_page_number`);
 
 --
--- Indexen voor tabel `pma__table_info`
+-- Indexes for table `pma__table_info`
 --
 ALTER TABLE `pma__table_info`
   ADD PRIMARY KEY (`db_name`,`table_name`);
 
 --
--- Indexen voor tabel `pma__table_uiprefs`
+-- Indexes for table `pma__table_uiprefs`
 --
 ALTER TABLE `pma__table_uiprefs`
   ADD PRIMARY KEY (`username`,`db_name`,`table_name`);
 
 --
--- Indexen voor tabel `pma__tracking`
+-- Indexes for table `pma__tracking`
 --
 ALTER TABLE `pma__tracking`
   ADD PRIMARY KEY (`db_name`,`table_name`,`version`);
 
 --
--- Indexen voor tabel `pma__userconfig`
+-- Indexes for table `pma__userconfig`
 --
 ALTER TABLE `pma__userconfig`
   ADD PRIMARY KEY (`username`);
 
 --
--- Indexen voor tabel `pma__usergroups`
+-- Indexes for table `pma__usergroups`
 --
 ALTER TABLE `pma__usergroups`
   ADD PRIMARY KEY (`usergroup`,`tab`,`allowed`);
 
 --
--- Indexen voor tabel `pma__users`
+-- Indexes for table `pma__users`
 --
 ALTER TABLE `pma__users`
   ADD PRIMARY KEY (`username`,`usergroup`);
 
 --
--- AUTO_INCREMENT voor geëxporteerde tabellen
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT voor een tabel `pma__bookmark`
+-- AUTO_INCREMENT for table `pma__bookmark`
 --
 ALTER TABLE `pma__bookmark`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT voor een tabel `pma__column_info`
+-- AUTO_INCREMENT for table `pma__column_info`
 --
 ALTER TABLE `pma__column_info`
   MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT voor een tabel `pma__export_templates`
+-- AUTO_INCREMENT for table `pma__export_templates`
 --
 ALTER TABLE `pma__export_templates`
   MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT voor een tabel `pma__history`
+-- AUTO_INCREMENT for table `pma__history`
 --
 ALTER TABLE `pma__history`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT voor een tabel `pma__pdf_pages`
+-- AUTO_INCREMENT for table `pma__pdf_pages`
 --
 ALTER TABLE `pma__pdf_pages`
   MODIFY `page_nr` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT voor een tabel `pma__savedsearches`
+-- AUTO_INCREMENT for table `pma__savedsearches`
 --
 ALTER TABLE `pma__savedsearches`
   MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT;
