@@ -45,9 +45,6 @@ global $db;
         <li class="breadcrumb-item"><a href="catagories.php">Catagories</a></li>
     </ol>
 </nav>
-<div class="container">
-    <div class="row">
-
         <?php
         try {
             $query = $db->prepare("SELECT * FROM products WHERE id= :id");
@@ -55,25 +52,27 @@ global $db;
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
             foreach ($result as &$data) {
-            echo "<h3>" .$data["merk"] . " ";
-            echo $data["type"] . " ";
-            echo "€".$data["prijs"] . " ";
-            echo "</h3>";
-            echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
-            echo $data ["description"];
-            echo "</a>";
-            echo "</div>";
+                echo "<h3>" .$data["merk"] . " ";
+                echo $data["type"] . " ";
+                echo "€".$data["prijs"] . " ";
+                echo "</h3>";
+                echo "<img class='image' src='" . $data["image"] . "' alt='img'>";
+                echo $data ["description"];
+                echo "</a>";
+                echo "</div>";
             }
         } catch (PDOException $e) {
             die("Error!: " . $e->getMessage());
         }
         echo "</div>";
         ?>
+        <?php echo "<br>" ?>
+        <?php include_once ("review.php") ?>
     </div>
-<footer class="bg-light text-center text-lg-start">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-        <a class="text-dark">Afdeling software development Tinwerf 10, 2544 ED Den Haag</a>
-    </div>
-</footer>
+    <footer class="bg-light text-center text-lg-start">
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <a class="text-dark">Afdeling software development Tinwerf 10, 2544 ED Den Haag</a>
+        </div>
+    </footer>
 </body>
 </html>
