@@ -67,7 +67,21 @@ global $db;
         echo "</div>";
         ?>
         <?php echo "<br>" ?>
-        <?php include_once ("review.php") ?>
+        <?php include_once ("review.php");
+        $query = $db->prepare("SELECT * FROM review WHERE product_id= :id");
+        $query->bindParam("id",$_GET['id']);
+        $query->execute();
+        $reviews = $query->fetchAll(PDO::FETCH_ASSOC);
+        echo "<ul>";
+        foreach ($reviews as $review) {
+            echo "<li>";
+            echo $review["name"]. " ";
+            echo $review["message"]. " ";
+            echo $review["score"] . " ";
+            echo "</li>";
+        }
+        echo "</ul>";
+        ?>
     </div>
     <footer class="bg-light text-center text-lg-start">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

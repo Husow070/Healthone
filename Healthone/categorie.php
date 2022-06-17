@@ -57,7 +57,7 @@
             foreach($result as $catagory) {
                 echo "<div class='col-12 col-sm-6 col-md-4'>";
                 echo "<a href='detail.php?id=" . $catagory['id'] . "'>";
-                echo "<h3>" . $catagory["type"] . " " .$catagory["merk"] ;
+                echo "<h3>" . $catagory["merk"] . " " .$catagory["type"] ;
                 echo "</h3>";
                 echo "<img class='image' src='" . $catagory["image"] . "' alt='img'>";
                 echo "</div>";
@@ -65,30 +65,6 @@
         ?>
     </div>
 </div>
-<!--    <div class="col-md-2">-->
-<!--        <h1>hello</h1>-->
-<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
-<!--    </div>-->
-<!--    <div class="col-md-2">-->
-<!--        <h1>hello</h1>-->
-<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
-<!--    </div>-->
-<!--    <div class="col-md-2">-->
-<!--        <h1>hello</h1>-->
-<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
-<!--    </div>-->
-<!--    <div class="col-md-2">-->
-<!--        <h1>hello</h1>-->
-<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
-<!--    </div>-->
-<!--    <div class="col-md-2">-->
-<!--        <h1>hello</h1>-->
-<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
-<!--    </div>-->
-<!--    <div class="col-md-2">-->
-<!--        <h1>hello</h1>-->
-<!--        <img class="img-fluid" src="./foto/Background-gym.jpg">-->
-<!--    </div>-->
 </div>
 <footer class="bg-light text-center text-lg-start">
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">

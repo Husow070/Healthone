@@ -3,19 +3,20 @@ include("databaseconnectie.php");
 global $db
 ?>
 <?php
-
 if (isset($_POST['verzenden'])) {
     $name = filter_input(INPUT_POST, "name", FILTER_SANITIZE_STRING);
     $message = filter_input(INPUT_POST, "message", FILTER_SANITIZE_STRING);
     $score = filter_input(INPUT_POST, "score", FILTER_SANITIZE_NUMBER_INT);
     $product = $_GET["id"];
+    $date = date("Y-m-d H:i:s");
     // opslaan in db
     try{
-        $query = $db->prepare("INSERT INTO review(name, message, score,product_id) VALUES (:Fname, :message, :score,:product_id) ");
+        $query = $db->prepare("INSERT INTO review(name, message, score,product_id,date) VALUES (:Fname, :message, :score,:product_id, :date) ");
         $query->bindParam("Fname", $name);
         $query->bindParam("message", $message);
         $query->bindParam("score", $score);
         $query->bindParam("product_id", $product);
+        $query->bindParam("date", $date);
         if ($query->execute()) {
             echo "Review geplaatst";
         } else {
@@ -30,6 +31,9 @@ if (isset($_POST['verzenden'])) {
     $message= "";
     $score= "";
     $product="";
+    $date= "";
+
+
 }
 ?>
 <style type="text/css">
