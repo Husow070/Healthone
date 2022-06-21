@@ -1,5 +1,6 @@
 <?php
 include ("databaseconnectie.php");
+global $db;
 ?>
 <!DOCTYPE html>
 <html lang="en">

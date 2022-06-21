@@ -22,7 +22,7 @@ global $db;
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav"
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sportapparaat</a>
+                    <a class="nav-link" href="catagories.php">Sportapparaat</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Registreren</a>
