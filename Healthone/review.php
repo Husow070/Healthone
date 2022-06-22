@@ -54,6 +54,7 @@ if (isset($_POST['verzenden'])) {
 <form method="post" action="">
     <label>name</label>
     <input type="text" name="name">
+    <br>
     <label>message</label>
     <input type="text" name="message">
     <br>
